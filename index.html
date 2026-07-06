@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample Website Audit - Riz & Mona Consultancy</title>
+  <meta name="description" content="A sample website consultation conversion audit prepared by Kemari Blakemore.">
+  <style>
+    :root {
+      --ink: #17212f;
+      --muted: #667085;
+      --line: #d8dee8;
+      --surface: #ffffff;
+      --soft: #f4f7fb;
+      --accent: #0b6b5f;
+      --accent-dark: #084f47;
+      --warn: #9a5b13;
+      --blue: #1e4f8f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: #eef3f8;
+      line-height: 1.6;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #123a4a 0%, #0b6b5f 58%, #1e4f8f 100%);
+      color: white;
+      padding: 56px 20px 42px;
+    }
+
+    .wrap {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: #d7fff7;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(255, 255, 255, .08);
+    }
+
+    h1 {
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: 1.02;
+      margin: 22px 0 16px;
+      max-width: 860px;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 820px;
+      font-size: 18px;
+      color: #e7f4f3;
+      margin: 0;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 34px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      background: rgba(255, 255, 255, .18);
+    }
+
+    .meta div {
+      padding: 16px;
+      background: rgba(255, 255, 255, .09);
+      min-width: 0;
+    }
+
+    .meta span {
+      display: block;
+      color: #bfe7e1;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0;
+      margin-bottom: 4px;
+    }
+
+    .meta strong {
+      display: block;
+      color: #fff;
+      font-size: 15px;
+      overflow-wrap: anywhere;
+    }
+
+    main {
+      padding: 34px 0 70px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.7fr .9fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    section, aside {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 0 18px 45px rgba(23, 33, 47, .06);
+    }
+
+    section + section {
+      margin-top: 18px;
+    }
+
+    h2 {
+      font-size: 25px;
+      line-height: 1.2;
+      margin: 0 0 14px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 24px 0 8px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .notice {
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      background: #eefaf7;
+      color: #153d39;
+      margin: 18px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .finding {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 16px 0;
+      background: #fcfdff;
+    }
+
+    .finding strong {
+      color: var(--accent-dark);
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: white;
+      background: var(--accent);
+      border-radius: 999px;
+      padding: 5px 9px;
+      margin-bottom: 10px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .mini {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      min-width: 0;
+    }
+
+    .mini b {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 18px;
+    }
+
+    .contact {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+
+    .contact h2 {
+      color: white;
+    }
+
+    .contact p,
+    .contact a {
+      color: #dfe8f3;
+      overflow-wrap: anywhere;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: var(--accent);
+      color: white !important;
+      font-weight: 800;
+      padding: 12px 14px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .scope {
+      border-color: #f1c27d;
+      background: #fff8ed;
+      color: #53340d;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      padding-top: 18px;
+    }
+
+    @media (max-width: 840px) {
+      .meta {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .wrap {
+        width: min(100% - 24px, 1080px);
+      }
+
+      .hero {
+        padding: 36px 0 28px;
+      }
+
+      section,
+      aside {
+        padding: 20px;
+      }
+
+      .meta {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Sample Website Audit</div>
+      <h1>Riz & Mona Consultancy: consultation conversion review</h1>
+      <p>A short sample audit showing how a corporate services website can guide more high-intent visitors toward a qualified consultation request.</p>
+      <div class="meta" aria-label="audit details">
+        <div>
+          <span>Prepared by</span>
+          <strong>Kemari Blakemore</strong>
+        </div>
+        <div>
+          <span>Role</span>
+          <strong>Independent Website Consultant</strong>
+        </div>
+        <div>
+          <span>Website reviewed</span>
+          <strong>rizmona.com</strong>
+        </div>
+        <div>
+          <span>Audit focus</span>
+          <strong>Consultation conversion</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <div>
+        <section>
+          <h2>Quick Summary</h2>
+          <p>Riz & Mona already has a strong website foundation: clear positioning, visible consultation CTAs, a setup cost calculator, broad service coverage, and credibility signals.</p>
+          <p>The main opportunity is not a full redesign. The practical opportunity is to make the path from high-intent visitor to consultation more direct.</p>
+          <div class="notice">
+            This sample audit focuses only on website structure, CTA clarity, forms, and visitor flow. It does not review UAE legal, tax, visa, banking, or company formation advice.
+          </div>
+        </section>
+
+        <section>
+          <h2>Key Visitor Intents</h2>
+          <p>High-intent visitors may arrive with several different needs. The page can help them self-select faster before requesting a consultation.</p>
+          <div class="split">
+            <div class="mini"><b>Company Formation</b>New founders comparing business setup options.</div>
+            <div class="mini"><b>Free Zone vs Mainland</b>Visitors unsure which jurisdiction fits their activity.</div>
+            <div class="mini"><b>Visa Support</b>Founders and investors asking about residency or Golden Visa routes.</div>
+            <div class="mini"><b>Banking and Tax</b>Businesses needing bank account, accounting, VAT, or corporate tax support.</div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Findings</h2>
+
+          <article class="finding">
+            <div class="label">Finding 1</div>
+            <h3>Calculator To Consultation Flow</h3>
+            <p><strong>Current risk:</strong> Visitors may use the setup cost calculator, browse several service areas, and leave without a clear next step.</p>
+            <p><strong>Suggested improvement:</strong> After calculator interaction, route the visitor into a short consultation CTA based on business activity, jurisdiction interest, visa needs, and timeline.</p>
+            <p><strong>Example CTA:</strong> Get a setup recommendation based on your activity, jurisdiction, and visa needs.</p>
+          </article>
+
+          <article class="finding">
+            <div class="label">Finding 2</div>
+            <h3>Service Path Segmentation</h3>
+            <p><strong>Current risk:</strong> The homepage and service sections cover many useful services, but different visitors may need different paths.</p>
+            <p><strong>Suggested segmentation:</strong></p>
+            <ul>
+              <li>I want to form a company.</li>
+              <li>I need help choosing mainland vs free zone.</li>
+              <li>I need residency or investor visa support.</li>
+              <li>I need corporate bank account support.</li>
+              <li>I need tax or bookkeeping support.</li>
+            </ul>
+          </article>
+
+          <article class="finding">
+            <div class="label">Finding 3</div>
+            <h3>Service-Level Trust Proof</h3>
+            <p><strong>Current risk:</strong> Strong trust proof is most useful when it appears near the specific service decision point.</p>
+            <p><strong>Suggested improvement:</strong> Place relevant proof near the CTA for each high-intent service, such as banking process clarity, visa document preparation, free zone comparison logic, and tax/accounting review process.</p>
+            <p>This does not require unsupported claims. It means placing the right proof near the right action.</p>
+          </article>
+        </section>
+
+        <section>
+          <h2>Suggested Mini Project</h2>
+          <p>Recommended first engagement:</p>
+          <div class="notice">
+            Calculator-to-consultation conversion audit
+          </div>
+          <ul>
+            <li>Review the current calculator and CTA path.</li>
+            <li>Map 3-5 visitor intent paths.</li>
+            <li>Recommend revised CTA copy and form fields.</li>
+            <li>Draft one improved high-intent landing page structure.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Suggested Form Fields</h2>
+          <p>A business setup consultation form can qualify users earlier with fields such as:</p>
+          <ul>
+            <li>Business activity</li>
+            <li>Preferred jurisdiction: mainland / free zone / not sure</li>
+            <li>Number of shareholders</li>
+            <li>Visa needs</li>
+            <li>Timeline</li>
+            <li>Bank account support needed</li>
+            <li>Accounting or tax support needed</li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="sidebar">
+        <section class="contact">
+          <h2>Prepared By</h2>
+          <p><strong>Kemari Blakemore</strong><br>Independent Website Consultant</p>
+          <p>Email:<br><a href="mailto:kemariblakemore734@gmail.com">kemariblakemore734@gmail.com</a></p>
+          <p>WhatsApp:<br><a href="https://wa.me/8618025545090">+86 180 2554 5090</a></p>
+          <a class="btn" href="mailto:kemariblakemore734@gmail.com?subject=Website%20audit%20conversation">Reply by email</a>
+        </section>
+
+        <section class="scope">
+          <h2>Scope Boundary</h2>
+          <p>This sample audit does not provide legal, tax, visa, banking, or company formation advice.</p>
+          <p>It is limited to website structure, landing page flow, CTA clarity, form qualification, and trust proof placement.</p>
+        </section>
+
+        <section>
+          <h2>Best Use</h2>
+          <p>Use this as a sample link in a first outreach email to show what a short audit looks like.</p>
+          <p class="muted">If the recipient replies, send a more specific 3-point audit for their own website.</p>
+        </section>
+      </aside>
+    </div>
+
+    <footer>
+      Sample audit prepared for outreach demonstration. Website observations are based on publicly visible pages and should be verified before any paid work.
+    </footer>
+  </main>
+</body>
+</html>
