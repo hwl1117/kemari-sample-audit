@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample UI Audit - UAE Interior Design Website</title>
+  <meta name="description" content="A sample website UI audit prepared by Kemari Blakemore for premium UAE service businesses.">
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #667085;
+      --line: #d8dee8;
+      --surface: #ffffff;
+      --soft: #f5f7fa;
+      --deep: #24343f;
+      --moss: #66745a;
+      --clay: #a85f3d;
+      --blue: #2c5c88;
+      --gold: #bd9a5d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f0f2f4;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .hero {
+      min-height: 520px;
+      display: flex;
+      align-items: flex-end;
+      background:
+        linear-gradient(90deg, rgba(19, 28, 37, .88), rgba(19, 28, 37, .42)),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80") center / cover;
+      color: #fff;
+      padding: 72px 24px 54px;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #e7d7b2;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 840px;
+      margin: 0;
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1.02;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 22px 0 0;
+      color: #e9edf0;
+      font-size: 19px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      border: 1px solid rgba(255, 255, 255, .38);
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .12);
+      font-size: 14px;
+    }
+
+    .band {
+      padding: 54px 0;
+    }
+
+    .band.white {
+      background: var(--surface);
+    }
+
+    .band.soft {
+      background: var(--soft);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(280px, 1fr);
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .kicker {
+      margin: 0 0 8px;
+      color: var(--clay);
+      font-weight: 760;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .score {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 18px;
+      min-height: 128px;
+    }
+
+    .score strong {
+      display: block;
+      font-size: 34px;
+      line-height: 1;
+      color: var(--deep);
+    }
+
+    .score span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .findings {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .finding {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .finding img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .finding .body {
+      padding: 20px;
+    }
+
+    .number {
+      display: inline-flex;
+      width: 32px;
+      height: 32px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #efe5d3;
+      color: #6f4d20;
+      font-weight: 760;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .finding p,
+    .mock-copy p,
+    .deliverable p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .mock {
+      display: grid;
+      grid-template-columns: minmax(280px, .9fr) minmax(0, 1.1fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .mock-copy {
+      border-left: 4px solid var(--gold);
+      padding-left: 22px;
+      align-self: center;
+    }
+
+    .mock-copy h2 {
+      margin-bottom: 16px;
+    }
+
+    .visual {
+      border: 1px solid #cbd4df;
+      border-radius: 8px;
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(20, 30, 42, .14);
+    }
+
+    .visual-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 300px;
+    }
+
+    .visual-image {
+      background: url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=80") center / cover;
+    }
+
+    .visual-text {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #fbfaf6;
+    }
+
+    .visual-text small {
+      color: var(--clay);
+      font-weight: 760;
+      text-transform: uppercase;
+    }
+
+    .visual-text h3 {
+      font-size: 31px;
+      margin: 10px 0 14px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .btn.primary {
+      color: #fff;
+      background: var(--deep);
+    }
+
+    .btn.secondary {
+      color: var(--deep);
+      border: 1px solid #b7c0ca;
+      background: #fff;
+    }
+
+    .visual-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid #e1e5eb;
+    }
+
+    .mini {
+      padding: 18px;
+      border-right: 1px solid #e1e5eb;
+    }
+
+    .mini:last-child {
+      border-right: 0;
+    }
+
+    .mini strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .mini span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .deliverables {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .deliverable {
+      min-height: 170px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 20px;
+    }
+
+    .footer {
+      padding: 36px 0 48px;
+      color: #dfe7ed;
+      background: var(--deep);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .footer p {
+      margin: 6px 0 0;
+      color: #b9c5cf;
+    }
+
+    .contact {
+      text-align: right;
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        min-height: 560px;
+      }
+
+      .section-head,
+      .mock,
+      .visual-top,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .score-grid,
+      .findings,
+      .deliverables {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .mini {
+        border-right: 0;
+        border-bottom: 1px solid #e1e5eb;
+      }
+
+      .mini:last-child {
+        border-bottom: 0;
+      }
+
+      .contact {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Sample UI Audit</p>
+      <h1>How a premium UAE interior design website can feel more polished and easier to inquire through.</h1>
+      <p>This sample shows the type of website UI thinking I use for interior design, fit-out, architecture, clinic, and luxury service businesses in the UAE.</p>
+      <div class="meta">
+        <span class="tag">Prepared by Kemari Blakemore</span>
+        <span class="tag">Website UI Designer</span>
+        <span class="tag">Homepage + portfolio + mobile CTA</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="band white">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Audit snapshot</p>
+            <h2>What I look for before suggesting a redesign.</h2>
+          </div>
+          <p>A good UAE service website does not need more decoration. It needs visual clarity, trust proof, and a faster path from first impression to inquiry.</p>
+        </div>
+        <div class="score-grid">
+          <div class="score">
+            <strong>01</strong>
+            <span>First-screen hierarchy and premium visual impression</span>
+          </div>
+          <div class="score">
+            <strong>02</strong>
+            <span>Portfolio proof and relevant project discovery</span>
+          </div>
+          <div class="score">
+            <strong>03</strong>
+            <span>Service clarity for the right type of client</span>
+          </div>
+          <div class="score">
+            <strong>04</strong>
+            <span>Mobile inquiry path, WhatsApp, and consultation CTA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band soft">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Three UI opportunities</p>
+            <h2>Small changes that can make the website feel more premium.</h2>
+          </div>
+          <p>These are sample observations for an interior / fit-out website. A real client audit would reference the exact live pages and screenshots.</p>
+        </div>
+        <div class="findings">
+          <article class="finding">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80" alt="Modern interior lounge">
+            <div class="body">
+              <span class="number">1</span>
+              <h3>Make the first screen sell the level of work.</h3>
+              <p>The first section should immediately show the best project image, the exact service category, and a clear consultation action.</p>
+            </div>
+          </article>
+          <article class="finding">
+            <img src="https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?auto=format&fit=crop&w=900&q=80" alt="Interior project details">
+            <div class="body">
+              <span class="number">2</span>
+              <h3>Turn projects into proof, not just a gallery.</h3>
+              <p>Project cards should show sector, size, location, scope, and result so a visitor can quickly find a relevant reference.</p>
+            </div>
+          </article>
+          <article class="finding">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Luxury residential interior">
+            <div class="body">
+              <span class="number">3</span>
+              <h3>Make mobile inquiry feel intentional.</h3>
+              <p>On mobile, the CTA should not be hidden. A simple fixed inquiry or WhatsApp entry can make the site easier to act on.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band white">
+      <div class="wrap">
+        <div class="mock">
+          <div class="mock-copy">
+            <p class="kicker">Sample redesign section</p>
+            <h2>A cleaner portfolio-to-inquiry section.</h2>
+            <p>This is the kind of section I would design as a first paid UI refresh: one focused homepage block that connects visual quality, project proof, and the next step.</p>
+          </div>
+          <div class="visual" aria-label="Sample redesigned website section">
+            <div class="visual-top">
+              <div class="visual-image"></div>
+              <div class="visual-text">
+                <small>Dubai interior design studio</small>
+                <h3>Spaces designed for clients who care about every detail.</h3>
+                <p>Residential, workplace, retail, and hospitality interiors with a clear path from first idea to completed space.</p>
+                <div class="button-row">
+                  <a class="btn primary" href="#contact">Request a consultation</a>
+                  <a class="btn secondary" href="#projects">View selected projects</a>
+                </div>
+              </div>
+            </div>
+            <div class="visual-bottom">
+              <div class="mini">
+                <strong>Residential villas</strong>
+                <span>Luxury family spaces</span>
+              </div>
+              <div class="mini">
+                <strong>Commercial fit-out</strong>
+                <span>Offices and retail</span>
+              </div>
+              <div class="mini">
+                <strong>Hospitality interiors</strong>
+                <span>Guest-focused environments</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band soft">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">What I can deliver</p>
+            <h2>A practical UI refresh, not an oversized rebuild.</h2>
+          </div>
+          <p>The first engagement should be small enough to approve quickly and concrete enough to judge visually.</p>
+        </div>
+        <div class="deliverables">
+          <div class="deliverable">
+            <h3>Homepage UI audit</h3>
+            <p>Short written audit with 3-5 UI observations and recommended section changes.</p>
+          </div>
+          <div class="deliverable">
+            <h3>One redesigned section</h3>
+            <p>A visual concept for the highest-impact homepage or service section.</p>
+          </div>
+          <div class="deliverable">
+            <h3>Portfolio UI structure</h3>
+            <p>Project card, case study, or category layout for easier project discovery.</p>
+          </div>
+          <div class="deliverable">
+            <h3>Mobile CTA cleanup</h3>
+            <p>Clear inquiry, WhatsApp, and consultation actions for smaller screens.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="wrap footer-grid">
+      <div>
+        <strong>Kemari Blakemore</strong>
+        <p>Website UI Designer for premium UAE service businesses.</p>
+      </div>
+      <div class="contact">
+        <div>kemariblakemore734@gmail.com</div>
+        <div>WhatsApp: +86 180 2554 5090</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
