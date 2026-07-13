@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kemari Blakemore | Concept UI Cases</title>
+  <meta name="description" content="Independent concept UI cases by Kemari Blakemore for premium service and product websites.">
+  <style>
+    :root { --ink:#15191c; --muted:#667078; --line:#d9dfe3; --paper:#f6f7f5; --accent:#cb5834; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; }
+    a { color:inherit; }
+    .wrap { width:min(1160px,calc(100% - 40px)); margin:0 auto; }
+    header { padding:22px 0; border-bottom:1px solid var(--line); }
+    .nav { display:flex; justify-content:space-between; gap:18px; align-items:center; font-size:14px; }
+    .brand { font-weight:800; text-decoration:none; }
+    .nav a:last-child { color:var(--muted); }
+    .hero { padding:88px 0 72px; max-width:850px; }
+    .eyebrow { color:var(--accent); font-size:13px; font-weight:800; text-transform:uppercase; margin:0 0 14px; }
+    h1 { max-width:760px; margin:0; font-size:clamp(40px,6vw,76px); line-height:1.02; letter-spacing:0; }
+    .intro { max-width:660px; margin:24px 0 0; color:var(--muted); font-size:18px; }
+    .honesty { display:inline-block; margin-top:25px; padding:8px 11px; border:1px solid var(--line); background:#fff; border-radius:6px; font-size:13px; color:#4d5860; }
+    .cases { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; padding-bottom:46px; }
+    .case { display:flex; flex-direction:column; min-height:100%; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden; text-decoration:none; transition:transform .18s ease, box-shadow .18s ease; }
+    .case:hover { transform:translateY(-3px); box-shadow:0 16px 30px rgba(22,28,32,.10); }
+    .case img { width:100%; aspect-ratio:4/3; display:block; object-fit:cover; }
+    .case-copy { padding:20px; }
+    .case-type { color:var(--accent); font-size:12px; font-weight:800; text-transform:uppercase; }
+    h2 { margin:9px 0 8px; font-size:25px; letter-spacing:0; }
+    .case p { margin:0; color:var(--muted); font-size:15px; }
+    .case-footer { margin-top:auto; padding:0 20px 20px; font-size:14px; font-weight:800; }
+    footer { border-top:1px solid var(--line); padding:28px 0 44px; color:var(--muted); font-size:14px; }
+    @media (max-width:780px) { .cases { grid-template-columns:1fr; } .hero { padding:58px 0 48px; } }
+    @media (max-width:520px) { .wrap { width:min(100% - 28px,1160px); } .nav { align-items:flex-start; flex-direction:column; gap:8px; } }
+  </style>
+</head>
+<body>
+  <header><div class="wrap nav"><a class="brand" href="./">Kemari Blakemore</a><a href="../ui-audit/">View sample UI audit</a></div></header>
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Website UI Designer</p>
+      <h1>Concept UI Cases for websites that need to look considered before they ask for an inquiry.</h1>
+      <p class="intro">Three focused explorations for premium product and service brands. Each one shows a different way to shape visual hierarchy, proof, and the path to action.</p>
+      <p class="honesty">Independent concept work. Not commissioned client work or performance claims.</p>
+    </section>
+    <section class="cases" aria-label="Concept UI Cases">
+      <a class="case" href="./nocturne/"><img src="./assets/nocturne-hero.png" alt="Amber glass object on a stone plinth"><div class="case-copy"><span class="case-type">Objects and interiors</span><h2>Nocturne</h2><p>A quieter product-led experience where material, scale, and the right detail carry the page.</p></div><div class="case-footer">Read case study</div></a>
+      <a class="case" href="./signal/"><img src="./assets/signal-hero.png" alt="Abstract silver and green technical composition"><div class="case-copy"><span class="case-type">Technology and architecture</span><h2>Signal</h2><p>A technical brand direction that turns complex capability into a more legible, premium story.</p></div><div class="case-footer">Read case study</div></a>
+      <a class="case" href="./kinfolk/"><img src="./assets/kinfolk-hero.png" alt="Colourful paper and cord composition"><div class="case-copy"><span class="case-type">Hospitality and lifestyle</span><h2>Kinfolk</h2><p>An expressive service brand direction designed to preserve personality while making booking easier.</p></div><div class="case-footer">Read case study</div></a>
+    </section>
+  </main>
+  <footer><div class="wrap">Kemari Blakemore · Website UI Designer · <a href="mailto:kemariblakemore734@gmail.com">kemariblakemore734@gmail.com</a></div></footer>
+</body>
+</html>
