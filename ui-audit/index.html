@@ -3,77 +3,277 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Website UI Audit | Kemari Blakemore</title>
-  <meta name="description" content="A sample website UI audit framework for premium UAE service businesses, prepared by Kemari Blakemore.">
+  <meta name="description" content="A sample website diagnostic brief by Kemari Blakemore.">
+  <title>Website Diagnostic Brief | Kemari Blakemore</title>
   <style>
-    :root { --ink:#17201b; --muted:#68726b; --line:#d4d8d0; --paper:#f6f4ef; --surface:#ffffff; --moss:#4f6657; --clay:#bb5c3e; --sand:#e8dfd0; --charcoal:#26312b; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; color:var(--ink); background:var(--paper); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; }
-    a { color:inherit; }
-    .wrap { width:min(1180px,calc(100% - 48px)); margin:0 auto; }
-    .site-header { border-bottom:1px solid rgba(255,255,255,.2); color:#fff; position:absolute; inset:0 0 auto; z-index:2; }
-    .nav { min-height:78px; display:flex; justify-content:space-between; align-items:center; gap:20px; font-size:14px; }
-    .brand { font-weight:800; text-decoration:none; letter-spacing:0; }
-    .nav-links { display:flex; gap:22px; align-items:center; }
-    .nav-links a { color:#edf1ec; text-decoration:none; }
-    .nav-links a:last-child { border:1px solid rgba(255,255,255,.55); padding:8px 11px; border-radius:6px; }
-    .hero { min-height:690px; display:grid; align-items:end; background:#26312b url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2200&q=90") center/cover; color:#fff; position:relative; overflow:hidden; }
-    .hero::after { content:""; position:absolute; inset:0; background:rgba(20,30,24,.59); }
-    .hero-content { position:relative; z-index:1; padding:170px 0 74px; max-width:870px; }
-    .eyebrow,.section-label { margin:0 0 14px; color:#e5d2b4; font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:0; }
-    h1 { max-width:850px; margin:0; font-size:clamp(44px,6.6vw,82px); line-height:1.01; letter-spacing:0; }
-    .hero-copy { max-width:665px; margin:24px 0 0; color:#eef2ec; font-size:19px; }
-    .hero-meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:31px; }
-    .hero-meta span { padding:7px 10px; border:1px solid rgba(255,255,255,.48); border-radius:6px; background:rgba(24,35,27,.32); font-size:13px; }
-    .hero-meta a { color:#fff; }
-    .band { padding:92px 0; }
-    .band.white { background:var(--surface); }
-    .band.ink { color:#f4f6f2; background:var(--charcoal); }
-    .section-head { display:grid; grid-template-columns:minmax(0,.95fr) minmax(320px,1fr); gap:52px; align-items:end; margin-bottom:42px; }
-    h2 { margin:0; max-width:600px; font-size:clamp(31px,4vw,52px); line-height:1.07; letter-spacing:0; }
-    .section-head > p:last-child { margin:0; color:var(--muted); font-size:17px; }
-    .ink .section-head > p:last-child { color:#cdd5ce; }
-    .audit-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid var(--line); }
-    .audit-point { min-height:280px; padding:25px 25px 24px 0; border-right:1px solid var(--line); margin-right:24px; }
-    .audit-point:last-child { border-right:0; margin-right:0; }
-    .num { color:var(--clay); font-size:14px; font-weight:800; }
-    .audit-point h3 { margin:35px 0 10px; font-size:24px; line-height:1.17; letter-spacing:0; }
-    .audit-point p { margin:0; max-width:310px; color:var(--muted); font-size:15px; }
-    .concept { border:1px solid #4d5e51; background:#202921; padding:18px; border-radius:8px; }
-    .browser-bar { display:flex; align-items:center; gap:7px; padding-bottom:16px; border-bottom:1px solid #4d5e51; }
-    .dot { width:8px; height:8px; border-radius:50%; background:#d1b273; }.dot:nth-child(2){background:#879e7d}.dot:nth-child(3){background:#bc7256}
-    .browser-name { margin-left:7px; color:#afbbb0; font-size:12px; }
-    .concept-page { display:grid; grid-template-columns:1.03fr .97fr; min-height:460px; }
-    .concept-image { background:url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=90") center/cover; min-height:380px; }
-    .concept-copy { padding:54px 42px; display:flex; flex-direction:column; justify-content:center; background:#f4f0e9; color:var(--ink); }
-    .concept-copy small { color:var(--clay); font-weight:800; text-transform:uppercase; }
-    .concept-copy h3 { margin:12px 0 15px; max-width:370px; font-size:clamp(29px,3.3vw,44px); line-height:1.06; letter-spacing:0; }
-    .concept-copy p { margin:0; color:var(--muted); }
-    .concept-links { display:flex; flex-wrap:wrap; gap:11px; margin-top:25px; }
-    .button { display:inline-flex; align-items:center; min-height:42px; padding:10px 13px; border:1px solid var(--ink); border-radius:6px; text-decoration:none; font-size:14px; font-weight:800; }
-    .button.primary { color:#fff; background:var(--ink); }.button.subtle { color:var(--ink); background:transparent; }
-    .deliverables { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
-    .deliverable { min-height:220px; padding:21px; border:1px solid var(--line); border-radius:8px; background:var(--surface); }
-    .deliverable span { color:var(--clay); font-size:12px; font-weight:800; text-transform:uppercase; }
-    .deliverable h3 { margin:30px 0 10px; font-size:20px; line-height:1.2; letter-spacing:0; }
-    .deliverable p { margin:0; color:var(--muted); font-size:14px; }
-    .case-link { padding:31px 0 0; color:#cfd9ce; font-size:16px; }.case-link a { color:#fff; font-weight:800; }
-    .footer { padding:38px 0 78px; background:#151c17; color:#d5ddd5; }.footer-grid { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:30px; align-items:end; }.footer strong { font-size:21px; }.footer p { max-width:520px; margin:9px 0 0; color:#aebbb0; }.contact { text-align:right; font-size:14px; }.contact a { color:#fff; font-weight:750; }.mobile-contact { display:none; }
-    @media(max-width:850px){ .hero { min-height:630px; }.section-head,.concept-page,.footer-grid { grid-template-columns:1fr; }.audit-grid,.deliverables { grid-template-columns:1fr; }.audit-point { min-height:auto; padding:22px 0; margin:0; border-right:0; border-bottom:1px solid var(--line); }.audit-point:last-child{border-bottom:0}.concept-copy{padding:36px 28px}.contact{text-align:left}.band{padding:66px 0} }
-    @media(max-width:560px){ .wrap{width:min(100% - 28px,1180px)}.nav-links a:first-child{display:none}.nav-links{gap:8px}.hero-content{padding:145px 0 52px}.hero{min-height:620px}.hero-copy{font-size:17px}.site-header{border-bottom-color:rgba(255,255,255,.28)}.mobile-contact{display:block;position:fixed;z-index:3;left:14px;right:14px;bottom:14px;padding:13px;text-align:center;border-radius:6px;background:#17201b;color:#fff;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(0,0,0,.24)}.footer{padding-bottom:100px} }
+    :root {
+      --ink: #17201e;
+      --soft-ink: #52605c;
+      --line: #cbd2cd;
+      --paper: #f2f3ed;
+      --panel: #fbfbf7;
+      --signal: #d6ff38;
+      --danger: #e9653f;
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    a { color: inherit; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    .eyebrow, .meta-label, .issue-number, .legend, th {
+      font-size: 0.72rem;
+      font-weight: 750;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .masthead {
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .masthead .wrap {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; font-size: 0.9rem; font-weight: 760; text-decoration: none; }
+    .brand-mark { width: 14px; height: 14px; background: var(--signal); border: 1px solid var(--ink); }
+    .status { display: inline-flex; align-items: center; gap: 8px; color: var(--soft-ink); font-size: 0.78rem; }
+    .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--signal); border: 1px solid var(--ink); }
+
+    .intro { padding: 58px 0 44px; border-bottom: 1px solid var(--line); }
+    .intro-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(280px, .75fr); gap: 56px; align-items: end; }
+    .eyebrow { margin: 0 0 16px; color: var(--soft-ink); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 760px; margin-bottom: 20px; font-size: clamp(2.6rem, 6vw, 5.8rem); line-height: .95; letter-spacing: 0; }
+    .lede { max-width: 620px; margin-bottom: 0; font-size: clamp(1rem, 1.7vw, 1.25rem); color: var(--soft-ink); }
+    .brief-meta { border-top: 2px solid var(--ink); padding-top: 14px; }
+    .brief-meta dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 10px; }
+    .brief-meta dt { color: var(--soft-ink); font-size: .72rem; text-transform: uppercase; }
+    .brief-meta dd { margin: 4px 0 0; font-weight: 700; font-size: .88rem; }
+
+    section { padding: 62px 0; border-bottom: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: 190px 1fr; gap: 32px; margin-bottom: 30px; }
+    h2 { max-width: 800px; margin-bottom: 0; font-size: clamp(1.75rem, 3vw, 3rem); line-height: 1; letter-spacing: 0; }
+    .section-note { max-width: 620px; margin: 15px 0 0; color: var(--soft-ink); }
+
+    .pulse-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .pulse { min-height: 160px; padding: 21px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--panel); }
+    .pulse strong { display: block; margin: 26px 0 6px; font-size: 1.35rem; line-height: 1.08; }
+    .pulse p { margin-bottom: 0; color: var(--soft-ink); font-size: .86rem; }
+    .flag { display: inline-block; padding: 3px 7px; background: var(--signal); font-size: .67rem; font-weight: 800; text-transform: uppercase; }
+
+    .evidence-frame { position: relative; overflow: hidden; border: 1px solid var(--ink); background: var(--ink); }
+    .evidence-frame img { display: block; width: 100%; min-height: 340px; object-fit: cover; opacity: .9; }
+    .evidence-caption { position: absolute; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-between; gap: 16px; padding: 13px 17px; color: #f4f5ee; background: rgba(23, 32, 30, .9); font-size: .76rem; }
+    .marker { position: absolute; display: flex; align-items: center; gap: 8px; padding: 7px 9px; border: 1px solid var(--ink); background: var(--signal); font-size: .75rem; font-weight: 780; }
+    .marker::after { content: ""; width: 34px; height: 1px; background: var(--ink); }
+    .marker.one { top: 25%; left: 7%; }
+    .marker.two { right: 7%; bottom: 24%; }
+
+    .findings { border-top: 2px solid var(--ink); }
+    .finding { display: grid; grid-template-columns: 148px minmax(180px, .72fr) minmax(220px, 1fr) minmax(220px, 1.1fr); gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .issue-number { color: var(--soft-ink); }
+    .finding h3 { margin-bottom: 8px; font-size: 1.3rem; line-height: 1.05; }
+    .finding p { margin-bottom: 0; color: var(--soft-ink); font-size: .92rem; }
+    .finding strong { display: block; margin-bottom: 8px; font-size: .78rem; text-transform: uppercase; }
+    .risk { color: var(--danger) !important; }
+
+    .path { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--ink); background: var(--panel); }
+    .path-step { position: relative; min-height: 200px; padding: 20px; border-right: 1px solid var(--ink); }
+    .path-step:last-child { border-right: 0; background: var(--signal); }
+    .path-step:not(:last-child)::after { content: "→"; position: absolute; right: -9px; bottom: 17px; z-index: 1; display: grid; width: 18px; height: 18px; place-items: center; color: var(--panel); background: var(--ink); font-size: .8rem; }
+    .path-step h3 { margin: 22px 0 7px; font-size: 1.08rem; }
+    .path-step p { margin-bottom: 0; color: var(--soft-ink); font-size: .84rem; }
+
+    .plan { display: grid; grid-template-columns: .8fr 1.2fr; gap: 0; border: 1px solid var(--ink); }
+    .plan-intro { padding: 30px; background: var(--ink); color: var(--panel); }
+    .plan-intro p { color: #c8d0cb; }
+    .plan-intro h2 { font-size: clamp(2rem, 3.6vw, 3.5rem); }
+    .plan-list { margin: 0; padding: 0; list-style: none; background: var(--panel); }
+    .plan-list li { display: grid; grid-template-columns: 110px 1fr; gap: 18px; padding: 25px 28px; border-bottom: 1px solid var(--line); }
+    .plan-list li:last-child { border-bottom: 0; }
+    .plan-list strong { font-size: .76rem; text-transform: uppercase; }
+    .plan-list span { color: var(--soft-ink); }
+
+    .method { display: grid; grid-template-columns: 190px 1fr; gap: 32px; align-items: start; }
+    .method-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .method-copy p { margin-bottom: 0; color: var(--soft-ink); }
+
+    footer { padding: 24px 0 46px; background: var(--paper); }
+    .footer-row { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
+    .footer-row p { max-width: 560px; margin-bottom: 0; color: var(--soft-ink); font-size: .82rem; }
+    .contact { display: inline-flex; padding: 12px 16px; border: 1px solid var(--ink); background: var(--signal); font-weight: 800; font-size: .85rem; text-decoration: none; }
+    .contact:hover { background: var(--ink); color: var(--panel); }
+
+    @media (max-width: 840px) {
+      .intro-grid, .section-head, .method, .method-copy, .plan { grid-template-columns: 1fr; gap: 24px; }
+      .pulse-grid, .path { grid-template-columns: repeat(2, 1fr); }
+      .finding { grid-template-columns: 115px 1fr; }
+      .finding > :nth-child(3), .finding > :nth-child(4) { grid-column: 2; }
+      .path-step:nth-child(2) { border-right: 0; }
+      .path-step:nth-child(3) { border-top: 1px solid var(--ink); }
+      .path-step:nth-child(4) { border-top: 1px solid var(--ink); }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(calc(100% - 28px), var(--max)); }
+      .masthead .wrap { min-height: 58px; }
+      .status { display: none; }
+      .intro, section { padding: 40px 0; }
+      .pulse-grid, .path { grid-template-columns: 1fr; }
+      .pulse, .path-step { border-right: 0; }
+      .path-step { border-bottom: 1px solid var(--ink); }
+      .path-step:last-child { border-bottom: 0; }
+      .path-step::after { display: none; }
+      .finding { grid-template-columns: 1fr; gap: 10px; }
+      .finding > :nth-child(3), .finding > :nth-child(4) { grid-column: auto; }
+      .plan-list li { grid-template-columns: 1fr; gap: 7px; }
+      .evidence-caption { flex-direction: column; }
+      .marker.two { right: 4%; }
+    }
   </style>
 </head>
 <body>
-  <header class="site-header"><div class="wrap nav"><a class="brand" href="../portfolio/">Kemari Blakemore</a><nav class="nav-links"><a href="../portfolio/">Concept UI Cases</a><a href="#contact">Start a conversation</a></nav></div></header>
-  <main>
-    <section class="hero"><div class="wrap hero-content"><p class="eyebrow">Sample website UI review</p><h1>Make the first impression feel as considered as the space itself.</h1><p class="hero-copy">A sample UI audit framework for UAE interior design, fit-out, architecture, and other premium service businesses that want a clearer route from strong visual work to qualified inquiries.</p><div class="hero-meta"><span>Prepared by Kemari Blakemore</span><span>Website UI Designer</span><span>Independent concept work</span><a href="../portfolio/">View concept UI cases</a></div></div></section>
-    <section class="band white"><div class="wrap"><div class="section-head"><div><p class="section-label" style="color:var(--clay)">Audit Framework</p><h2>What gets attention before a visitor decides to enquire.</h2></div><p>A useful review is not a scorecard. It shows where a real visitor loses confidence, what proof they need next, and the smallest design change that would make the path easier to act on.</p></div><div class="audit-grid"><article class="audit-point"><span class="num">01</span><h3>First-screen confidence</h3><p>Does the opening image, headline, and service focus immediately communicate the level and type of project you want?</p></article><article class="audit-point"><span class="num">02</span><h3>Proof with context</h3><p>Can a visitor find work similar to their brief, then understand the scope, location, and value of that project?</p></article><article class="audit-point"><span class="num">03</span><h3>A deliberate inquiry path</h3><p>Does mobile make consultation, WhatsApp, or a project brief feel like the clear next step instead of a hidden afterthought?</p></article></div></div></section>
-    <section class="band ink"><div class="wrap"><div class="section-head"><div><p class="section-label">Sample page direction</p><h2>A homepage should take a visitor somewhere, not just show them more.</h2></div><p>This sample section turns a strong portfolio image into a clear message, relevant proof, and one purposeful action. It is a design direction, not a claim about a client website.</p></div><div class="concept"><div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="browser-name">concept homepage direction</span></div><div class="concept-page"><div class="concept-image" aria-label="Interior design concept image"></div><div class="concept-copy"><small>Dubai interior design studio</small><h3>Spaces with a point of view, built for how people actually live and work.</h3><p>Residential, hospitality, and workplace interiors shaped from first brief to final detail.</p><div class="concept-links"><a class="button primary" href="#contact">Request a consultation</a><a class="button subtle" href="../portfolio/">View selected work</a></div></div></div></div></div></section>
-    <section class="band white"><div class="wrap"><div class="section-head"><div><p class="section-label" style="color:var(--clay)">Small first engagement</p><h2>What the paid review includes</h2></div><p>The first project should be easy to approve, visually concrete, and scoped around the part of the website that most affects the inquiry journey.</p></div><div class="deliverables"><article class="deliverable"><span>01 · Observe</span><h3>3-5 specific observations</h3><p>Written notes tied to the homepage, portfolio, service page, and mobile flow that a decision-maker can review quickly.</p></article><article class="deliverable"><span>02 · Prioritise</span><h3>One focused UI direction</h3><p>A recommendation for the highest-impact section to refresh first, without proposing an unnecessary rebuild.</p></article><article class="deliverable"><span>03 · Structure</span><h3>Page hierarchy and CTA plan</h3><p>Clear content order, proof placement, and inquiry actions designed around the type of client you want to attract.</p></article><article class="deliverable"><span>04 · Mobilise</span><h3>Mobile inquiry cleanup</h3><p>A practical recommendation for WhatsApp, consultation, or project brief entry points on smaller screens.</p></article></div></div></section>
-    <section class="band ink"><div class="wrap"><div class="section-head"><div><p class="section-label">More design directions</p><h2>See the way I frame different website problems.</h2></div><p>These independent concept cases show three different visual and structural approaches for product, technology, and hospitality brands.</p></div><p class="case-link"><a href="../portfolio/">View the Concept UI Cases</a></p></div></section>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Kemari Blakemore</a>
+      <span class="status">Independent website diagnosis</span>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="intro">
+      <div class="wrap intro-grid">
+        <div>
+          <p class="eyebrow">Sample deliverable / 01</p>
+          <h1>Website<br>Diagnostic Brief</h1>
+          <p class="lede">A practical review of the moments between first impression and inquiry. This fictional B2B example shows the level of evidence and direction included in a real diagnostic.</p>
+        </div>
+        <aside class="brief-meta" aria-label="Brief details">
+          <dl>
+            <div><dt>Client</dt><dd>Baseline Services<br><span aria-label="Fictional sample">Fictional sample</span></dd></div>
+            <div><dt>Scope</dt><dd>Homepage + inquiry path</dd></div>
+            <div><dt>Review type</dt><dd>Visual + conversion</dd></div>
+            <div><dt>Prepared by</dt><dd>Kemari Blakemore</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">01 / Executive pulse</p>
+          <div><h2>The experience signals quality, but delays a decision.</h2><p class="section-note">The diagnosis is not a redesign wish list. It isolates the few decisions that make a qualified visitor either continue or leave.</p></div>
+        </div>
+        <div class="pulse-grid">
+          <article class="pulse"><span class="flag">Priority</span><strong>Clarify the offer</strong><p>State the core service and who it is for before visual treatment takes over.</p></article>
+          <article class="pulse"><span class="flag">Priority</span><strong>Make proof scannable</strong><p>Let a visitor find relevant capabilities, outcomes and reasons to trust without hunting through the page.</p></article>
+          <article class="pulse"><span class="flag">Priority</span><strong>Move the inquiry</strong><p>Place the next decision at the point where interest is strongest, not after a long visual scroll.</p></article>
+          <article class="pulse"><span class="flag">Method</span><strong>Fix the path first</strong><p>Keep the visual character. Improve hierarchy, proof and contact momentum around it.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">02 / Observed evidence</p>
+          <div><h2>One screen, two missed decisions.</h2><p class="section-note">Illustrative screenshot of the fictional sample site. Annotations show where the diagnostic begins, rather than presenting invented performance data.</p></div>
+        </div>
+        <figure class="evidence-frame">
+          <img src="assets/diagnostic-evidence-v2.png" alt="Illustrative B2B services website homepage in a desktop browser frame.">
+          <span class="marker one">Offer is absent</span>
+          <span class="marker two">Inquiry is deferred</span>
+          <figcaption class="evidence-caption"><span>Observed evidence / fictional reference</span><span>Review focus: clarity, proof, conversion path</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">03 / Findings</p>
+          <div><h2>Three changes, ordered by decision impact.</h2><p class="section-note">Each recommendation is tied to something observable on the page. No claims about traffic, conversion rate or revenue are made without access to source data.</p></div>
+        </div>
+        <div class="findings">
+          <article class="finding">
+            <p class="issue-number">Priority 01</p>
+            <div><h3>Lead with a clear offer, not an abstract promise.</h3><p>The opening area creates an impression but gives a qualified buyer no reason to continue or self-identify.</p></div>
+            <div><strong>Observed evidence</strong><p>Visual treatment dominates the first screen. Service focus and decision context arrive only after scrolling.</p></div>
+            <div><strong>Recommendation</strong><p>Add a one-line positioning statement and two high-intent service paths beside the opening visual.</p></div>
+          </article>
+          <article class="finding">
+            <p class="issue-number">Priority 02</p>
+            <div><h3>Turn credibility into usable proof.</h3><p>Trust signals are present, but a visitor cannot quickly identify the relevant capability, result or delivery scope.</p></div>
+            <div><strong>Observed evidence</strong><p>Capabilities, logos and claims are presented as a single block without decision-level context.</p></div>
+            <div><strong>Recommendation</strong><p>Introduce a compact proof index with service type, client challenge and a two-line outcome narrative.</p></div>
+          </article>
+          <article class="finding">
+            <p class="issue-number">Priority 03</p>
+            <div><h3>Ask for the brief while intent is high.</h3><p>Visitors can admire the work, but the next action is not connected to the proof that created interest.</p></div>
+            <div><strong>Risk</strong><p class="risk">A qualified visitor must self-initiate the next step after the page has already lost momentum.</p></div>
+            <div><strong>Recommendation</strong><p>Use a project-level CTA that asks for a short brief, with the expected response and timeline stated plainly.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">04 / Conversion path</p>
+          <div><h2>Give each page a single job.</h2><p class="section-note">The improved path does not require more content. It gives existing content a visible sequence from confidence to contact.</p></div>
+        </div>
+        <div class="path" role="list">
+          <article class="path-step" role="listitem"><p class="meta-label">01</p><h3>Arrive</h3><p>Understand the offer and identify the relevant sector within the first scan.</p></article>
+          <article class="path-step" role="listitem"><p class="meta-label">02</p><h3>Recognise</h3><p>Find comparable work with enough context to assess fit.</p></article>
+          <article class="path-step" role="listitem"><p class="meta-label">03</p><h3>Trust</h3><p>See the team, process and response expectation without searching for them.</p></article>
+          <article class="path-step" role="listitem"><p class="meta-label">04</p><h3>Inquire</h3><p>Send a concise project brief at the moment interest becomes specific.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="plan">
+          <div class="plan-intro"><p class="eyebrow">05 / Action plan</p><h2>Next 14 days</h2><p>A small implementation sequence that improves the decision path before considering a broader rebuild.</p></div>
+          <ol class="plan-list">
+            <li><strong>Days 1-2</strong><span>Confirm priority sectors, the ideal inquiry and the proof a visitor needs before contact.</span></li>
+            <li><strong>Days 3-6</strong><span>Reorder the homepage around positioning, credibility proof and a visible short-brief entry point.</span></li>
+            <li><strong>Days 7-10</strong><span>Create proof-index rules and one reusable service-detail template.</span></li>
+            <li><strong>Days 11-14</strong><span>Review the mobile decision path, contact friction and the first response experience.</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap method">
+        <p class="eyebrow">How to read this</p>
+        <div class="method-copy"><p>This is a sample of an independent diagnostic, not a client case study. A live review is based on the company's own public pages, stated goals and any access they choose to share.</p><p>Recommendations are deliberately limited to what can be verified. There are no invented results, visitor counts or claims of work for similar brands.</p></div>
+      </div>
+    </section>
   </main>
-  <footer class="footer" id="contact"><div class="wrap footer-grid"><div><strong>Kemari Blakemore</strong><p>Website UI Designer for premium UAE service businesses. I review structure, visual hierarchy, proof, and inquiry flow. I do not provide legal, tax, visa, banking, or company formation advice.</p></div><div class="contact"><a href="mailto:kemariblakemore734@gmail.com">kemariblakemore734@gmail.com</a><br><a href="https://wa.me/8618025545090">WhatsApp: +86 180 2554 5090</a></div></div></footer>
-  <a class="mobile-contact" href="https://wa.me/8618025545090">WhatsApp Kemari</a>
+
+  <footer>
+    <div class="wrap footer-row">
+      <p>Prepared by Kemari Blakemore, independent website diagnostician. Sample prepared to demonstrate a focused visual and conversion review.</p>
+      <a class="contact" href="mailto:kemariblakemore734@gmail.com?subject=Website%20diagnostic%20brief">Request a brief</a>
+    </div>
+  </footer>
 </body>
 </html>

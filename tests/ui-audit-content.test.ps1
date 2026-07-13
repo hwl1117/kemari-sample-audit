@@ -14,11 +14,17 @@ if (-not (Test-Path $auditFile)) {
   throw "Missing UI audit page: $auditFile"
 }
 
-$audit = Get-Content -Raw $auditFile
-Assert-Contains $audit 'Audit Framework' 'audit framework section'
-Assert-Contains $audit 'What the paid review includes' 'paid deliverables section'
-Assert-Contains $audit 'Independent concept work' 'honesty note'
-Assert-Contains $audit 'View concept UI cases' 'portfolio navigation'
+$audit = Get-Content -Raw $auditFile -Encoding utf8
+Assert-Contains $audit 'Website Diagnostic Brief' 'diagnostic brief heading'
+Assert-Contains $audit 'Observed evidence' 'evidence section'
+Assert-Contains $audit 'Conversion path' 'conversion path section'
+Assert-Contains $audit 'Next 14 days' 'action plan section'
+Assert-Contains $audit 'Fictional B2B example' 'honesty note'
+Assert-Contains $audit 'assets/diagnostic-evidence-v2.png' 'neutral B2B evidence asset'
 Assert-Contains $audit 'mailto:kemariblakemore734@gmail.com' 'email contact route'
 
-Write-Host 'UI audit content checks passed.'
+if ($audit -match 'interior design|hospitality owner|residential client|Concept Case') {
+  throw 'The diagnostic sample includes a prohibited legacy design-industry reference.'
+}
+
+Write-Host 'UI diagnostic content checks passed.'
